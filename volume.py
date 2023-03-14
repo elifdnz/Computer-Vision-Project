@@ -12,13 +12,14 @@ while True:
     success, image = cap.read()
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
+    image = cv2.flip(image,1)
+   # cv2.rectangle(image,(100,100),(300,300),(255,0,255),4)
     results = hands.process(image)
 
     if results.multi_hand_landmarks:
         for hand_landmarks in results.multi_hand_landmarks:
             mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
+            
     cv2.imshow("Hands", image)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
