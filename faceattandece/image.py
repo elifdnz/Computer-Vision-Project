@@ -2,7 +2,7 @@ import cv2
 import face_recognition
 import numpy as np
 
-imgKivanc = face_recognition.load_image_file('kivanc.jpeg')
+imgKivanc = face_recognition.load_image_file('images/kivanc.jpeg')
 imgKivanc = cv2.resize(imgKivanc,(640,480))
 imgKivanc = cv2.cvtColor(imgKivanc,cv2.COLOR_BGR2RGB)
 
@@ -11,7 +11,7 @@ fcEnc = face_recognition.face_encodings(imgKivanc)[0]
 
 cv2.rectangle(imgKivanc,(fcLoc[3],fcLoc[0]),(fcLoc[1],fcLoc[2]),(0,0,255),3)
 
-imgtest= face_recognition.load_image_file('test.jpeg')
+imgtest= face_recognition.load_image_file('images/test.jpeg')
 imgtest = cv2.resize(imgtest,(640,480))
 imgtest = cv2.cvtColor(imgtest,cv2.COLOR_BGR2RGB)
 
@@ -20,7 +20,7 @@ fcEncT = face_recognition.face_encodings(imgtest)[0]
 
 cv2.rectangle(imgtest,(fcLocT[3],fcLocT[0]),(fcLocT[1],fcLocT[2]),(0,0,255),3)
 '''
-imgBurak= face_recognition.load_image_file('burak.jpeg')
+imgBurak= face_recognition.load_image_file('images/burak.jpeg')
 imgBurak = cv2.resize(imgBurak,(640,480))
 imgBurak = cv2.cvtColor(imgBurak,cv2.COLOR_BGR2RGB)
 
