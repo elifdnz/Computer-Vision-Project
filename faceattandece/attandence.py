@@ -24,3 +24,38 @@ for im in imList:
     arrName.append(os.path.splitext(im)[0])
 print(arrName)
 
+
+def encoding(arrIm):
+    encolist = []
+    for img in arrIm:
+       img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB) 
+       enco = face_recognition.face_encodings(img)[0]
+       encolist.append(enco)
+    return encolist
+
+encoWrite = encoding(arrIm)
+
+vid = cv2.VideoCapture(0)
+
+while True:
+    correct, cap = vid.read()
+    cap = cv2.resize(cap,(0,0),None,0.25,0.25)
+    cap = cv2.cvtColor(cap,cv2.COLOR_BGR2RGB) 
+    fcLocC = face_recognition.face_locations(cap)
+    fcEncC = face_recognition.face_encodings(cap,fcLocC)
+
+    for encoFace, LocFace in zip(fcEncC,fcLocC):
+        comp = face_recognition.compare_faces(encoWrite,encoFace)
+        Dis = face_recognition.face_distance(encoWrite,encoFace)
+        matIndex = np.argmin(Dis)
+
+        if comp[matIndex]:
+            find_name = arrName[matIndex].upper()
+            print(find_name)
+
+
+
+
+
+
+       
