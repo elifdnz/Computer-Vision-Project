@@ -5,7 +5,7 @@ import os
 
 
 path = 'images'
-imList = os.listdir(path)
+imList = [f for f in os.listdir(path) if not f.startswith('.')]
 '''
 imgKivanc = face_recognition.load_image_file('images/kivanc.jpeg')
 imgKivanc = cv2.resize(imgKivanc,(640,480))
@@ -28,9 +28,9 @@ print(arrName)
 def encoding(arrIm):
     encolist = []
     for img in arrIm:
-       img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB) 
-       enco = face_recognition.face_encodings(img)[0]
-       encolist.append(enco)
+        img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB) 
+        enco = face_recognition.face_encodings(img)[0]
+        encolist.append(enco)
     return encolist
 
 encoWrite = encoding(arrIm)
