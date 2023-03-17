@@ -38,8 +38,8 @@ encoWrite = encoding(arrIm)
 vid = cv2.VideoCapture(0)
 
 while True:
-    correct, cap = vid.read()
-    cap = cv2.resize(cap,(0,0),None,0.25,0.25)
+    correct, cap1 = vid.read()
+    cap = cv2.resize(cap1,(0,0),None,0.25,0.25)
     cap = cv2.cvtColor(cap,cv2.COLOR_BGR2RGB) 
     fcLocC = face_recognition.face_locations(cap)
     fcEncC = face_recognition.face_encodings(cap,fcLocC)
@@ -51,8 +51,15 @@ while True:
 
         if comp[matIndex]:
             find_name = arrName[matIndex].upper()
-            print(find_name)
+            y1,x1,y2,x2 = LocFace
+            y1,x1,y2,x2 = y1*4,x1*4,y2*4,x2*4
+            cv2.rectangle(cap1,(x1,y1),(x2,y2),(0,255,100),2)
+            cv2.rectangle(cap1,(x1,y2-35),(x2,y2),(0,255,100),cv2.FILLED)
+            cv2.putText(cap1,find_name,(x1-100,y2-6),cv2.FONT_HERSHEY_DUPLEX,1,(255,255,255),2)
 
+    if cv2.waitKey(5) & 0xFF==ord('q'):
+        break
+    cv2.imshow('Webcam',cap1)
 
 
 
