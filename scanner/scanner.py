@@ -24,5 +24,9 @@ while True:
     kernel = np.ones((5,5))
     imgDial = cv2.dilate(imgThreshold,kernel,iterations=2)
     imgThreshold = cv2.erode(imgDial,kernel,iterations=1)
-    
+
+    imgContour = img.copy()
+    imgBigContoru = img.copy()
+    contour, hiyearchy = cv2.findContours(imgThreshold,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    cv2.drawContours(imgContour,contour,-1,(0,255,0),10)
 
