@@ -40,3 +40,10 @@ while True:
         matrix = cv2.getPerspectiveTransform(pts1, pts2)
         imgWarpColored = cv2.warpPerspective(img, matrix, (width, height))
 
+        imgWarpColored=imgWarpColored[20:imgWarpColored.shape[0] - 20, 20:imgWarpColored.shape[1] - 20]
+        imgWarpColored = cv2.resize(imgWarpColored,(width,height))
+
+        imgWarpGray = cv2.cvtColor(imgWarpColored,cv2.COLOR_BGR2GRAY)
+        imgAdaptiveThre= cv2.adaptiveThreshold(imgWarpGray, 255, 1, 1, 7, 2)
+        imgAdaptiveThre = cv2.bitwise_not(imgAdaptiveThre)
+        imgAdaptiveThre=cv2.medianBlur(imgAdaptiveThre,3)
