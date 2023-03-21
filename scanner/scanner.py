@@ -26,7 +26,17 @@ while True:
     imgThreshold = cv2.erode(imgDial,kernel,iterations=1)
 
     imgContour = img.copy()
-    imgBigContoru = img.copy()
+    imgBigContour = img.copy()
     contour, hiyearchy = cv2.findContours(imgThreshold,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
     cv2.drawContours(imgContour,contour,-1,(0,255,0),10)
+
+    biggest, maxArea = utlis.biggestContour(contour) # FIND THE BIGGEST CONTOUR
+    if biggest.size != 0:
+        biggest=utlis.reorder(biggest)
+        cv2.drawContours(imgBigContour, biggest, -1, (0, 255, 0), 20) # DRAW THE BIGGEST CONTOUR
+        imgBigContour = utlis.drawRectangle(imgBigContour,biggest,2)
+        pts1 = np.float32(biggest) # PREPARE POINTS FOR WARP
+        pts2 = np.float32([[0, 0],[width, 0], [0, height],[width, height]]) # PREPARE POINTS FOR WARP
+        matrix = cv2.getPerspectiveTransform(pts1, pts2)
+        imgWarpColored = cv2.warpPerspective(img, matrix, (width, height))
 
