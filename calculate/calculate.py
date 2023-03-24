@@ -21,7 +21,17 @@ mp_hands = mp.solutions.hands
 cap = cv2.VideoCapture(0)
 cap.set(3,1280)
 cap.set(4,720)
-button1 = Button((700,150),100,100,'5')
+buttonListValues = [['7', '8', '9', '*'],
+                    ['4', '5', '6', '-'],
+                    ['1', '2', '3', '+'],
+                    ['0', '/', '.', '=']]
+buttonList = []
+for x in range(4):
+    for y in range(4):
+        xpos = x * 100 + 800
+        ypos = y * 100 + 150
+ 
+        buttonList.append(Button((xpos, ypos), 100, 100, buttonListValues[y][x]))
 with mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.5) as hands:
 
     while True:
@@ -37,7 +47,8 @@ with mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_conf
 
 
                 mp_drawing.draw_landmarks(img, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-        button1.draw(img)
+        for button in buttonList:
+            button.draw(img)
         cv2.imshow("Image", img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
