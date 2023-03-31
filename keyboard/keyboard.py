@@ -58,7 +58,7 @@ buttonListValues = [['W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
 buttonList = []
 equation = ""
 
-for x in range(10):
+for x in range(9):
     for y in range(3):
         xpos = x * 100 + 100
         ypos = y * 100 + 150
