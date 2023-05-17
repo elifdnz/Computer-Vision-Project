@@ -1,22 +1,28 @@
 # Computer-Vision-Project
-Virtual Keyboard Project
+Computer Vision Projects
 
-The Virtual Keyboard project aims to create a virtual keyboard on the screen using computer vision techniques and hand tracking. With this project, users can type on the screen by performing hand gestures. The project is implemented using Python programming language and relies on the OpenCV library for computer vision functionalities.
+This repository contains a collection of computer vision projects developed using Python programming language. The projects utilize various computer vision libraries such as OpenCV, Mediapipe, NumPy, and more to implement different functionalities.
 
-Features
--Virtual keyboard display on the screen.
--Hand tracking to detect hand gestures.
--Mapping hand gestures to corresponding keyboard keys.
--Real-time tracking of hand movements.
--Dynamic visual feedback of detected hand gestures.
+Projects
+1. Virtual Calculator
+The Virtual Calculator project implements a calculator interface on the screen using hand tracking. Users can input numbers and perform calculations by pressing the virtual keys displayed on the screen.
+
+2. Virtual Keyboard
+The Virtual Keyboard project creates a virtual keyboard on the screen and enables users to type by using hand gestures detected through computer vision techniques.
+
+3. Gesture-based Volume Control
+The Gesture-based Volume Control project allows users to increase or decrease the system volume by performing specific hand gestures captured through the camera.
+
+4. Face Detection Program
+The Face Detection Program detects and recognizes faces in real-time using computer vision algorithms. It can identify the location and track multiple faces simultaneously.
+
+5. Document Scanner
+The Document Scanner project enables users to scan and digitize documents using computer vision techniques. It captures an image of a document, applies perspective transformation, and enhances the scanned output.
 
 Requirements
--Python
--OpenCV library
 
-Usage
--Run the project as mentioned in the installation steps.
--Place your hand in front of the camera to activate hand tracking.
--Use your fingers to select the desired keys on the virtual keyboard.
--The selected keys will be displayed on the screen as you type.
--Perform the appropriate gestures for special keys such as space, delete, or enter.
+Python 3.x
+OpenCV library 
+Mediapipe library 
+NumPy library 
+Other required libraries (if any)
